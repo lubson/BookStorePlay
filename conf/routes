@@ -5,6 +5,8 @@
 # Home page
 GET     /                                       Publication.index
 
+GET     /sign_up                                Security.signUp
+
 # Ignore favicon requests
 GET     /favicon.ico                            404
 

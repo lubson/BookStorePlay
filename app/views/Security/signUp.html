@@ -1,0 +1,17 @@
+#{extends 'main.html' /}
+
+<h3>Sign up</h3>
+ 
+#{form @Security.signUp}
+    <p>
+        <label for="login">Your login </label>
+        <input type="text" name="login" id="login" />
+    </p>
+    <p>
+        <label for="password">Your message: </label>
+        <input type="password"  name="password" id="password"></textarea>
+    </p>
+    <p>
+        <input type="submit" value="Sign up!" />
+    </p>
+#{/form}
