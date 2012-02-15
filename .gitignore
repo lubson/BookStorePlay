@@ -3,4 +3,5 @@
 /modules/*
 /tmp/
 .classpath
-.projects
+.project
+.settings/
