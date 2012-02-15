@@ -1,5 +1,6 @@
 package controllers;
  
+import java.util.List;
 import models.*;
  
 public class Security extends Secure.Security {
@@ -15,15 +16,21 @@ public class Security extends Secure.Security {
     return false;
   }
 
-  public static void getSignUp(String login, String password) {
+  static boolean isSigned() {
+    return true;
+  }
+
+  public static void showSignUp() {
+    //User user = new User("assa","");
     render();
 
   }
 
-
-   public static void postSignUp(String login, String password) {
+   public static void createSignUp(String login, String password) {
       User user = new User(login, password);
       user.save();
+      List list = User.findAll();
+      System.out.println(list);
       Publication.index();
    }
     

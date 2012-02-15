@@ -1,0 +1,16 @@
+package models;
+
+import play.*;
+import play.db.jpa.*;
+
+import javax.persistence.*;
+import java.util.*;
+
+@Entity
+public class PublicationType extends Model {
+    
+    public static User connect(String login, String password) {
+        return find("byLoginAndPassword", login, password).first();
+    }
+  
+}

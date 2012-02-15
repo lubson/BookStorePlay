@@ -9,7 +9,7 @@ import java.util.*;
 
 import models.*;
 
-@With(Secure.class)
+//@With(Secure.class)
 public class Publication extends Controller {
     public static void index() {
         render();
