@@ -1,13 +1,13 @@
 #{extends 'main.html' /} 
 
-#{form @Publication.create()}
+#{form @Publication.create(), enctype:'multipart/form-data'}
 <form class="form-horizontal">
 	<fieldset>
 		<legend>New publication</legend>
 		<div class="control-group">
 			<label class="control-label" for="fileInput">File input:</label>
 			<div class="controls">
-				<input class="input-file" id="fileInput" type="file" name="path">
+				<input class="input-file" id="fileInput" type="file" name="file">
 			</div>
 		</div>
 		<div class="control-group">
@@ -24,6 +24,7 @@
 					as:'category'}
 					<option value="${category.id}">${category.name}</option> #{/list}
 				</select>
+				#{a @Category.index()}Create new category #{/a}
 			</div>
 		</div>
 		<div class="form-actions">

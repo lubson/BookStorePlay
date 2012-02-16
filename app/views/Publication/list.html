@@ -1,0 +1,29 @@
+#{extends 'main.html' /} 
+
+<table class="table table-striped">
+	<thead>
+		<tr>
+			<th>Name</th>
+			<th>Category</th>
+			<th>Uploaded by</th>
+			<th>Uploaded at</th>
+		</tr>
+	</thead>
+	<tbody>
+		#{list items:publications, as:'publication'}
+		<tr>
+			<td>#{a @Publication.show(publication.id)}${publication.name}#{/a}</td>
+			<td>#{a @Category.show(publication.category.id)}${publication.category.name}#{/a}</td>
+			<td>Anonymous</td>
+			<td>${publication.createdTime}</td>
+		
+		</tr>
+		#{/list}
+	</tbody>
+</table>
+#{ifnot publications}
+	<p>There is no publications yet.		
+#{/ifnot}
+		
+</div>
+</div>

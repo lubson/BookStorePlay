@@ -3,8 +3,15 @@ package controllers;
 
 import play.*;
 
+import play.data.Upload;
 import play.mvc.*;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.net.URISyntaxException;
 import java.util.*;
 
@@ -22,10 +29,29 @@ public class Publication extends Controller {
         render(categories);
     }
     
-    public static void create(String name, Long categoryId) throws URISyntaxException {
+    public static void create(String name, Long categoryId, Upload file) throws URISyntaxException, IOException {
     	Date createdTime = new Date();
-    	PublicationModel publication = new PublicationModel(name, "defaultPath", createdTime);
-    	System.out.println("AAAAAAAAAAAAAAAAAAA" + categoryId);
+    	
+    	byte[] buffer = new byte[8 * 1024];
+    	
+    	InputStream input = file.asStream();
+    	try {
+    	  OutputStream output = new FileOutputStream( "public/publications/" + file.getFileName());
+    	  try {
+    	    int bytesRead;
+    	    while ((bytesRead = input.read(buffer)) != -1) {
+    	      output.write(buffer, 0, bytesRead);
+    	    }
+    	  } finally {
+    	    output.close();
+    	  }
+    	} finally {
+    	  input.close();
+    	}
+    	
+    	
+    	    	
+    	PublicationModel publication = new PublicationModel(name, file.getFileName(), createdTime);
     	publication.category = CategoryModel.findById(categoryId);
     	publication.save();
     	index();
@@ -55,5 +81,10 @@ public class Publication extends Controller {
         category.delete();
         index();
     }
+     
+     public static void list() {
+    	 List publications = PublicationModel.findAll();
+    	 render(publications);
+     }
 
 }
