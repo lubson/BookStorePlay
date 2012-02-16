@@ -5,7 +5,26 @@
         <label for="login">Name of the category: </label>
         <input type="text" name="name" id="name" value="${category.name}"/>
     </p>
+    <a class="insert-attribute" href="#">Insert field</a>
     <p>
         <input type="submit" value="Save" class="btn"/>
     </p>
 #{/form}
+
+<script type="text/javascript" charset="utf-8">
+    var counter = 0;
+  
+
+
+    $(".insert-attribute").click(function(e){
+      e.preventDefault();
+      $(this).before($('<p><input type="text" name="attribute-name-' + counter + '"/><a class="remove-attribute" href="#">Remove</a><br/></p>'));
+      counter = counter + 1;
+      $(".remove-attribute").click(function(e){
+        e.preventDefault();
+        $(this).parent().remove();
+      });
+    });
+
+
+</script>
