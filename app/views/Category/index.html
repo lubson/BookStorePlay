@@ -6,11 +6,11 @@
         <input type="text" name="name" id="name" />
     </p>
     <p>
-        <input type="submit" value="Add this category" />
+        <input type="submit" value="Add this category" class="btn"/>
     </p>
 #{/form}
 
-#{ifnot publicationTypes}
+#{ifnot categories}
   <p>
     There is no category yet.
   </p>
@@ -19,7 +19,9 @@
 <ul>
   #{list items:categories, as:'category'}
     <li>
-      ${category.name}
+      #{a @Category.show(category.id)}
+        ${category.name}
+      #{/a}      
       #{a @Category.delete(category.id)}Remove#{/a}
     </li>
   #{/list}

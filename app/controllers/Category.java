@@ -21,6 +21,11 @@ public class Category extends Application {
         //renderJSON(category);
     }
     
+     public static void show(Long id) {
+        CategoryModel category = CategoryModel.findById(id);
+        render(category);
+    }
+    
      public static void delete(Long id) {
         CategoryModel category = CategoryModel.findById(id);
         category.delete();
