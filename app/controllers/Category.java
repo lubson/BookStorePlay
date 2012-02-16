@@ -17,7 +17,14 @@ public class Category extends Application {
     public static void create(String name) {
         CategoryModel category = new CategoryModel(name);
         category.save();
-        renderJSON(category);
+        index();
+        //renderJSON(category);
+    }
+    
+     public static void delete(Long id) {
+        CategoryModel category = CategoryModel.findById(id);
+        category.delete();
+        index();
     }
 
 }
