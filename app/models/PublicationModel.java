@@ -10,7 +10,7 @@ import java.net.URI;
 import java.net.URISyntaxException;
 
 @Entity
-public class PublicationModel {
+public class PublicationModel extends Model{
 	
 	@ManyToOne
 	public User user;

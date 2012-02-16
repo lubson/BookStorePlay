@@ -1,3 +1,8 @@
 #{extends 'main.html' /}
 
 <h2>${category.name}</h2>
+
+<div>
+    #{a @Category.edit(category.id)}edit#{/a}
+    #{a @Category.delete(category.id)}remove#{/a}
+</div>

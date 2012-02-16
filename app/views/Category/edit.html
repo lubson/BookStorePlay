@@ -1,0 +1,11 @@
+#{extends 'main.html' /}
+ 
+#{form @Category.save(category.id)}
+    <p>
+        <label for="login">Name of the category: </label>
+        <input type="text" name="name" id="name" value="${category.name}"/>
+    </p>
+    <p>
+        <input type="submit" value="Save" class="btn"/>
+    </p>
+#{/form}

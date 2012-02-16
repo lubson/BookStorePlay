@@ -22,7 +22,8 @@
       #{a @Category.show(category.id)}
         ${category.name}
       #{/a}      
-      #{a @Category.delete(category.id)}Remove#{/a}
+      #{a @Category.edit(category.id)}edit#{/a}
+      #{a @Category.delete(category.id)}remove#{/a}
     </li>
   #{/list}
 </ul>

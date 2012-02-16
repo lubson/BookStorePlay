@@ -7,7 +7,7 @@ import javax.persistence.*;
 import java.util.*;
 
 @Entity
-public class ValueModel {
+public class ValueModel extends Model {
 
 	public String value;
 	
