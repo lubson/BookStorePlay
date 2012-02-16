@@ -18,7 +18,7 @@ public class Category extends Application {
         CategoryModel category = new CategoryModel(name);
         category.save();
         show(category.id);
-        //renderJSON(category);
+        //renderJSON(category); 
     }
     
      public static void show(Long id) {

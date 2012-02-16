@@ -40,4 +40,8 @@ public class PublicationModel extends Model{
 		this.path = new URI(path);
 		this.createdTime = createdTime;
 	}
+	
+	public String toString(){
+		return name + " : " + path + " : " + category.name;	
+	}
 }

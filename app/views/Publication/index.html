@@ -1,1 +1,19 @@
 #{extends 'main.html' /}
+
+#{ifnot publications}
+  <p>
+    There is no publications yet.
+  </p>
+#{/ifnot}
+
+<ul>
+  #{list items:publications, as:'publication'}
+    <li>
+      #{a @Publication.show(publication.id)}
+        ${publication}
+      #{/a}      
+      #{a @Publication.edit(publication.id)}edit#{/a}
+      #{a @Publication.delete(publication.id)}remove#{/a}
+    </li>
+  #{/list}
+</ul>

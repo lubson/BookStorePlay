@@ -20,7 +20,7 @@
   #{list items:categories, as:'category'}
     <li>
       #{a @Category.show(category.id)}
-        ${category.name}
+        ${category.name} ${category.id}
       #{/a}      
       #{a @Category.edit(category.id)}edit#{/a}
       #{a @Category.delete(category.id)}remove#{/a}
