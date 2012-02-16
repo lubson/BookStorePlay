@@ -13,11 +13,15 @@ public class CategoryModel extends Model {
   
   public String name;
   
-  @OneToMany(mappedBy="categoryModel", cascade=CascadeType.ALL)
-  public List<TypeModel> typeModel;
+  @OneToMany(cascade=CascadeType.ALL)
+  public List<AttributeModel> attributes;
+  
+  @OneToMany(cascade=CascadeType.ALL)
+  public List<PublicationModel> publications;
   
   public CategoryModel(String name) {
-    this.typeModel = new ArrayList<TypeModel>();
+    this.attributes = new ArrayList<AttributeModel>();
+    this.publications = new ArrayList<PublicationModel>();
     this.name = name;
   }
 }
