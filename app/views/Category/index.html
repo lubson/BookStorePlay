@@ -1,0 +1,27 @@
+#{extends 'main.html' /}
+ 
+#{form @Category.create()}
+    <p>
+        <label for="login">Name of the category: </label>
+        <input type="text" name="name" id="name" />
+    </p>
+    <p>
+        <input type="submit" value="Add this category" />
+    </p>
+#{/form}
+
+#{ifnot publicationTypes}
+  <p>
+    There is no category yet.
+  </p>
+#{/ifnot}
+
+<ul>
+  #{list items:categories, as:'category'}
+    <li>
+      ${category.name}
+      #{a @Category.delete(category.id)}Remove#{/a}
+    </li>
+  #{/list}
+</ul>
+
