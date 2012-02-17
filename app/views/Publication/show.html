@@ -1,0 +1,15 @@
+#{extends 'main.html' /}
+
+<h2>${publication.name}</h2>
+<h4>${publication.category.name}</h4>
+
+<div>
+    <p>
+    	<a href="${publication.path}" class="btn btn-large btn-primary">Download</a>
+    </p>
+    <p>
+        <a class="btn btn-warning" href="#"><i class="icon-pencil icon-white"></i>Edit</a>
+        <a class="btn btn-danger" href="#"><i class="icon-trash icon-white"></i> Delete</a>
+    </p>
+    
+</div>

@@ -12,6 +12,8 @@ import java.net.URISyntaxException;
 @Entity
 public class PublicationModel extends Model{
 	
+	
+	
 	@ManyToOne
 	public User user;
 	

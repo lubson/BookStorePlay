@@ -30,13 +30,15 @@ public class Publication extends Controller {
     }
     
     public static void create(String name, Long categoryId, Upload file) throws URISyntaxException, IOException {
+    	
+    	String pathOnServer = "public/publications/" + file.getFileName();
     	Date createdTime = new Date();
     	
     	byte[] buffer = new byte[8 * 1024];
     	
     	InputStream input = file.asStream();
     	try {
-    	  OutputStream output = new FileOutputStream( "public/publications/" + file.getFileName());
+    	  OutputStream output = new FileOutputStream(pathOnServer);
     	  try {
     	    int bytesRead;
     	    while ((bytesRead = input.read(buffer)) != -1) {
@@ -51,7 +53,7 @@ public class Publication extends Controller {
     	
     	
     	    	
-    	PublicationModel publication = new PublicationModel(name, file.getFileName(), createdTime);
+    	PublicationModel publication = new PublicationModel(name, pathOnServer, createdTime);
     	publication.category = CategoryModel.findById(categoryId);
     	publication.save();
     	index();
