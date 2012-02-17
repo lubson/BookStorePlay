@@ -2,7 +2,15 @@
 
 <h2>${category.name}</h2>
 
-<div>
+<ul class='attributes' >
+  #{list items:category.attributes, as:'attribute'}
+    <li>
+      ${attribute.name}
+    </li>
+  #{/list}
+</ul>
+
+<div class='actions'>
     #{a @Category.edit(category.id)}edit#{/a}
     #{a @Category.delete(category.id)}remove#{/a}
 </div>

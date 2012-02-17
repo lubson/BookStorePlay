@@ -2,29 +2,38 @@
  
 #{form @Category.save(category.id)}
     <p>
-        <label for="login">Name of the category: </label>
-        <input type="text" name="name" id="name" value="${category.name}"/>
+      <label for="login">Name of the category: </label>
+      <input type="text" name="name" id="name" value="${category.name}"/>
     </p>
+    <div >
+    <label for="login">Attributes:</label>
+    #{list items:category.attributes, as:'attribute'}
+      <p>
+        <input type="text"  name="attributes" value="${attribute.name}"/>
+        <a class="remove-attribute" href="#">Remove</a>
+      </p>
+    #{/list}
     <a class="insert-attribute" href="#">Insert field</a>
+    </div>
     <p>
-        <input type="submit" value="Save" class="btn"/>
+      <input type="submit" value="Save" class="btn"/>
     </p>
 #{/form}
 
-<script type="text/javascript" charset="utf-8">
-    var counter = 0;
-  
-
-
+<script type="text/javascript" charset="utf-8"> 
     $(".insert-attribute").click(function(e){
       e.preventDefault();
-      $(this).before($('<p><input type="text" name="attribute-name-' + counter + '"/><a class="remove-attribute" href="#">Remove</a><br/></p>'));
-      counter = counter + 1;
+      $(this).before($('<p><input type="text" name="attributes"/><a class="remove-attribute" href="#">Remove</a><br/></p>'));
       $(".remove-attribute").click(function(e){
         e.preventDefault();
+        $(this).parent().fadeOut();
         $(this).parent().remove();
       });
-    });
-
-
+    });  
+    $(".remove-attribute").click(function(e){
+        e.preventDefault();
+        $(this).parent().fadeOut();
+        $(this).parent().remove();
+        
+    }); 
 </script>

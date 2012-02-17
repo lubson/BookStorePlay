@@ -24,4 +24,11 @@ public class CategoryModel extends Model {
     this.publications = new ArrayList<PublicationModel>();
     this.name = name;
   }
+
+  public CategoryModel addAttribute(String name) {
+    AttributeModel attribute = new AttributeModel(name);
+    this.attributes.add(attribute);
+    this.save();
+    return this;
+  }
 }
