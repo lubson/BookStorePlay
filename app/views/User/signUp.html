@@ -1,17 +1,49 @@
+
 #{extends 'main.html' /}
 
-<h3>Sign up</h3>
+<div class="container-fluid">
+	<div class="row-fluid">
+	</div>
+	<div class="row-fluid">
+		<div class="span3">
+			&nbsp;		
+		</div>
+		<div class="well span6">	
+			#{if flash.error}
+			<div class="alert">
+  				<a class="close" data-dismiss="alert">×</a>
+  				&{flash.error}.
+			</div>
+			#{/if}
+			<form class="form-horizontal" method="POST" action="@{User.createUser}">
+		        <fieldset>
+		          <legend>Registration</legend>
+		          <div class="control-group">
+		            <label class="control-label" for="input01">Username:</label>
+		            <div class="controls">
+		              <input type="text" name="username" class="input-xlarge" id="input01" value="${username}">
+		            </div>
+		          </div>
+		          <div class="control-group">
+		            <label class="control-label" for="input01">Password:</label>
+		            <div class="controls">
+		              <input type="password" name="password" class="input-xlarge" id="input01">
+		              <p class="help-block">Minimal 4 characters.</p>
+		            </div>
+		          </div>
+		          <div class="control-group">
+		            <label class="control-label" for="input01">Confirm password:</label>
+		            <div class="controls">
+		              <input type="password" name="confirmPassword"class="input-xlarge" id="input01">
+		            </div>
+		          </div>
+		          <div class="form-actions">
+		            <button type="submit" class="btn btn-primary">Sign up</button>
+		          </div>
+		        </fieldset>
+		      </form>		
+		</div>
+	</div>
+</div>
  
-#{form @User.createUser()}
-    <p>
-        <label for="login">Your username </label>
-        <input type="text" name="username" id="login" />
-    </p>
-    <p>
-        <label for="password">Your password: </label>
-        <input type="password"  name="password" id="password"></textarea>
-    </p>
-    <p>
-        <input type="submit" value="Sign up!" />
-    </p>
-#{/form}
+

@@ -20,11 +20,14 @@ import models.*;
 //@With(Secure.class)
 public class Publication extends Controller {
     public static void index() {
-    	List publications = PublicationModel.findAll();
+    	List publications = PublicationModel.find("order by createdTime desc").fetch(5);	
         render(publications);
     }
     
-    public static void add() {
+    public static void add() throws Throwable {
+    	if(!session.contains("username")) {
+    		Secure.login();
+    	}
         List categories = CategoryModel.findAll();
         render(categories);
     }
@@ -55,6 +58,7 @@ public class Publication extends Controller {
     	    	
     	PublicationModel publication = new PublicationModel(name, pathOnServer, createdTime);
     	publication.category = CategoryModel.findById(categoryId);
+    	publication.user = UserModel.find("byUsername", session.get("username")).first();
     	publication.save();
     	index();
     }
@@ -83,10 +87,21 @@ public class Publication extends Controller {
         category.delete();
         index();
     }
+      
+     public static void list(String categoryName) {
+    	 if (categoryName == null || CategoryModel.find("byName", categoryName).first() == null) { 
+    		 List publications = PublicationModel.find("").fetch(20);
+        	 List categories = CategoryModel.findAll();
+        	 render(publications, categories);
+    	 } 
+    	 CategoryModel category = CategoryModel.find("byName", categoryName).first();
+    	 List publications = PublicationModel.find("byCategory", category).fetch(20);
+    	 List categories = CategoryModel.findAll();
+    	 render(publications, categories);
+     }
      
-     public static void list() {
-    	 List publications = PublicationModel.findAll();
-    	 render(publications);
+     public static void myPublications() {
+    	 render();
      }
 
 }

@@ -1,29 +1,81 @@
-#{extends 'main.html' /} 
+#{extends 'main.html' /}
 
-<table class="table table-striped">
-	<thead>
-		<tr>
-			<th>Name</th>
-			<th>Category</th>
-			<th>Uploaded by</th>
-			<th>Uploaded at</th>
-		</tr>
-	</thead>
-	<tbody>
-		#{list items:publications, as:'publication'}
-		<tr>
-			<td>#{a @Publication.show(publication.id)}${publication.name}#{/a}</td>
-			<td>#{a @Category.show(publication.category.id)}${publication.category.name}#{/a}</td>
-			<td>Anonymous</td>
-			<td>${publication.createdTime}</td>
-		
-		</tr>
-		#{/list}
-	</tbody>
-</table>
-#{ifnot publications}
-	<p>There is no publications yet.		
-#{/ifnot}
-		
-</div>
+<style>
+.space {
+	margin-right: 30px;
+}
+
+.bigger {
+	height: 40px;
+}
+
+.biggerButton {
+	height: 50px;
+}
+</style>
+
+<div class="container-fluid">
+	<div class="row-fluid">
+		<div class="span12">
+			&nbsp;
+		</div>
+	</div>
+	<div class="row-fluid">
+		<div class="span3">
+			&nbsp;
+		</div>
+		<div class="span6">
+			<form class="form-search">
+				<input type="text" class="bigger span9">
+				<button type="submit" class="btn btn-primary biggerButton">&nbsp;&nbsp;Search!&nbsp;&nbsp;</button>
+			</form>
+		</div>
+		<div class="span3">
+			&nbsp;
+		</div>
+	</div>
+
+	<div class="row-fluid">
+		<div class="span2">
+			<div class="well sidebar-nav">
+				<ul class="nav nav-list">
+					<li class="nav-header">Categories</li>
+					<li class="active"><a href="#">All</a></li>
+					#{list items:categories, as:'category'}
+					<li><a href="#">${category.name}</a></li>
+					#{/list}					
+				</ul>
+			</div>
+			<!--/.well -->
+		</div>
+		<!--/span-->
+		<div class="span10">
+			<div class="hero-unit">
+				<h2>Search result:</h2>
+				<table class="table table-striped">
+					<thead>
+						<tr>
+							<th>Name</th>
+							<th>Category</th>
+							<th>Uploaded by</th>
+							<th>Uploaded at</th>
+						</tr>
+					</thead>
+					<tbody>
+						#{list items:publications, as:'publication'}
+						<tr>
+							<td>#{a @Publication.show(publication.id)}${publication.name}#{/a}</td>
+							<td>#{a @Category.show(publication.category.id)}${publication.category.name}#{/a}</td>
+							<td>${publication.user.username}</td>
+							<td>${publication.createdTime}</td>					
+						</tr>
+						#{/list}
+						</tbody>
+				</table>
+				#{ifnot publications}
+					<p>There is no publications yet.</p>		
+				#{/ifnot}
+			</div>
+		</div>
+	</div>
 </div>

@@ -16,11 +16,11 @@ public class Security extends Secure.Security {
   }
   
   static void onAuthenticated() {
-	  Category.index();
+	  Publication.index();
   }
   
   static void onDisconnected() {
-	  Category.index();
+	  Publication.index();
   }
 
 }

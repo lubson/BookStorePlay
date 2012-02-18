@@ -1,34 +1,49 @@
 #{extends 'main.html' /}
 
-<div id="login" class="">
-	
-	<h1>&{'secure.title'}</h1>
-		
-	#{form @authenticate()}		
-		#{if flash.error}
-			<p class="error">
-				&{flash.error}
-			</p>
-		#{/if}
-		#{if flash.success}
-			<p class="success">
-				&{flash.success}
-			</p>
-		#{/if}
-		<p id="username-field">
-			<label for="username">&{'secure.username'}</label>
-			<input type="text" name="username" id="username" value="${flash.username}" />
-		</p>
-		<p id="password-field">
-			<label for="password">&{'secure.password'}</label>
-			<input type="password" name="password" id="password" value="" />
-		</p>
-		<p id="remember-field">
-			<input type="checkbox" name="remember" id="remember" value="true" ${flash.remember ? 'checked="true"' : ''} />
-			<label for="remember">&{'secure.remember'}</label>
-		</p>
-		<p id="signin-field">
-			<input type="submit" id="signin" value="&{'secure.signin'}" />
-		</p>
-	#{/form}
+<div class="container-fluid">
+	<div class="row-fluid">
+	</div>
+	<div class="row-fluid">
+		<div class="span3">
+			&nbsp;		
+		</div>
+		<div class="well span6">	
+			#{if flash.error}
+			<div class="alert">
+  				<a class="close" data-dismiss="alert">×</a>
+  				&{flash.error}.
+			</div>
+			#{/if}
+			<form class="form-horizontal" method="POST" action="@{Secure.authenticate}">
+		        <fieldset>
+		          <legend>Log in</legend>
+		          <div class="control-group">
+		            <label class="control-label" for="input01">Username:</label>
+		            <div class="controls">
+		              <input type="text" name="username" class="input-xlarge" id="input01" value="${flash.username}">
+		            </div>
+		          </div>
+		          <div class="control-group">
+		            <label class="control-label" for="input01">Password:</label>
+		            <div class="controls">
+		              <input type="password" name="password" class="input-xlarge" id="input01">
+		              <p class="help-block">Minimal 4 characters.</p>
+		            </div>
+		          </div>
+		          <div class="control-group">
+		            <label class="control-label" for="input01">Remember me:</label>
+		            <div class="controls">
+              			<label class="checkbox">
+                			<input type="checkbox" name="remember" id="optionsCheckbox" value="true"
+                			    ${flash.remember ? 'checked="true"' : ''}>
+              			</label>
+            		</div>   
+		          </div>
+		          <div class="form-actions">
+		            <button type="submit" class="btn btn-primary">Log in</button>
+		          </div>
+		        </fieldset>
+		      </form>		
+		</div>
+	</div>
 </div>
