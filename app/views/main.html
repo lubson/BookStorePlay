@@ -34,7 +34,12 @@ body {
 </head>
 <body data-spy="scroll" data-target=".subnav" data-offset="50">
 	<!--  start navbar -->
-	#{headers/header_auth /}
+	#{if controllers.Security.isSigned()}
+		#{headers/header_auth /}
+	#{/if} 
+	#{else}
+		#{headers/header /}
+	#{/else}
 	<!--/span-->
 	<div class="container well">#{doLayout /}</div>
 	<!--/span-->

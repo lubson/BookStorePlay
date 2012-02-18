@@ -69,6 +69,7 @@ textarea {
 button, input {
   *overflow: visible;
   line-height: normal;
+  vertical-align: center;
 }
 button::-moz-focus-inner, input::-moz-focus-inner {
   padding: 0;

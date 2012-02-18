@@ -4,9 +4,11 @@
 
 # Home page
 GET     /                                       Publication.index
+GET		/login									Security.login
+GET     /logout                                 Security.logout
 
-GET     /sign_up                                Security.showSignUp
-POST    /sign_up                                Security.createSignUp
+GET     /signUp                                 User.signUp
+POST    /createUser                             User.createUser
 
 # Ignore favicon requests
 GET     /favicon.ico                            404

@@ -15,7 +15,7 @@ public class PublicationModel extends Model{
 	
 	
 	@ManyToOne
-	public User user;
+	public UserModel userModel;
 	
 	@ManyToOne 
 	public CategoryModel category;
@@ -29,7 +29,7 @@ public class PublicationModel extends Model{
 	
 	public PublicationModel(String name, URI path, Date createdTime) {
 		this.name = name;
-		this.user = null;
+		this.userModel = null;
 		this.category = null;
 		this.path = path;
 		this.createdTime = createdTime;
@@ -37,7 +37,7 @@ public class PublicationModel extends Model{
 	
 	public PublicationModel(String name, String path, Date createdTime) throws URISyntaxException {
 		this.name = name;
-		this.user = null;
+		this.userModel = null;
 		this.category = null;
 		this.path = new URI(path);
 		this.createdTime = createdTime;

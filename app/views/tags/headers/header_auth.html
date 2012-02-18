@@ -1,20 +1,24 @@
-<div class="navbar navbar-fixed-top">
-    <div class="navbar-inner">
-      <div class="container-fluid">
-        <a class="btn btn-navbar" data-toggle="collapse"
-          data-target=".nav-collapse"> <span class="icon-bar"></span> <span
-          class="icon-bar"></span> <span class="icon-bar"></span>
-        </a> <a class="brand" href="@{Publication.index}"> <img src="/public/images/logo.png"
-          width="18" height="18" /> BookStorePlay
-        </a>
-        
-          <ul class="nav">
-              <li class="active"><a href="@{Publication.index}">Home</a></li>
-              <li class="active"><a href="@{Publication.add}">Publications</a></li>
-              <li class="active"><a href="@{Category.index}">Categories</a></li>
-          </ul>
-          <!-- RIGHT LINE -->
-
-        </div>
-    </div>
-  </div>
+<div class="navbar navbar-fixed-top active">
+  <div class="navbar-inner">
+    <div class="container-fluid" style="width: auto;">
+			<a class="btn btn-navbar" data-toggle="collapse"
+				data-target=".nav-collapse"> <span class="icon-bar"></span> <span
+				class="icon-bar"></span> <span class="icon-bar"></span>
+			</a> <a class="brand" href="/"> <img src="/public/images/logo.png"
+				width="18" height="18" /> BookStorePlay
+			</a>
+			<div class="nav-collapse">
+				<ul class="nav">
+					<li class="active"><a href="@{Publication.index}">Home</a></li>
+					<li><a href="@{Publication.list}">Publications</a></li>
+					<li><a href="@{Category.index}">Category</a></li>
+					<li><a href="#">Help</a></li>
+				</ul>
+				<!-- RIGHT LINE -->
+				<p class="navbar-text pull-right">
+					Logged in as <b>&{session.get("username")}</b>, <a href="@{Secure.logout}">[ logout ]</a></p>
+			</div>
+			<!--/.nav-collapse -->
+		</div>
+	</div>
+</div>
